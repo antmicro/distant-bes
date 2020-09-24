@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "proto/grp.proto";
+import "proto/user_id.proto";
+
+package user;
+
+message GetUserRequest {
+  UserId user_id = 1;
+}
+
+message GetUserResponse {
+  DisplayUser display_user = 1;
+
+  // The groups this user is a member of.
+  repeated grp.Group user_group = 2;
+}
+
+message CreateUserRequest {
+  // User sub ID is inferred from the (required) side-channel token.
+  // UserID (buildbuddy) is generated.
+  // Other values (like name, etc) will have initial values that are pulled
+  // from the authentication provider response.
+}
+
+message CreateUserResponse {
+   DisplayUser display_user = 1;
+}
