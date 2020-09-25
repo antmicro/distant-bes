@@ -1,6 +1,6 @@
 # distant-bes
 
-Copyright (c) 2019 [Antmicro](https://www.antmicro.com)
+Copyright (c) 2019-2020 [Antmicro](https://www.antmicro.com)
 
 This repository contains code of `distant-bes`, a library for injecting build results into services implementing [Bazel's Build Event Protocol](https://docs.bazel.build/versions/master/build-event-protocol.html).
 
