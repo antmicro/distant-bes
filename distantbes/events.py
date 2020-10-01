@@ -9,16 +9,23 @@ def file_message(name, contents):
     file_msg.contents = contents.encode()
     return file_msg
 
-def started(uuid, command, build_tool_version="0.0.1", start_time=None):
+def started(uuid, command, build_tool_version="0.0.1", start_time=None, pattern=[]):
     if start_time is None:
         start_time = get_current_timestamp()
 
     event = bes.BuildEvent()
     event.id.started.SetInParent()
+
     event.started.uuid = uuid
     event.started.start_time_millis = start_time
     event.started.build_tool_version = build_tool_version
     event.started.command = command
+
+    if len(pattern) > 0:
+        pattern_e = bes.BuildEventId()
+        pattern_e.pattern.SetInParent()
+        pattern_e.pattern.pattern.extend(pattern)
+        event.children.append(pattern_e)
 
     return event
 

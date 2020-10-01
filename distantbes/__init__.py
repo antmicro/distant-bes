@@ -23,6 +23,7 @@ class Invocation:
             uuid=None,
             hostname=None,
             channel_timeout=3,
+            pattern=[],
             ):
         self.grpc_bes_url = grpc_bes_url
         self.grpc_cas_enabled = grpc_cas_enabled
@@ -57,6 +58,7 @@ class Invocation:
         self.__cpu = cpu
         self.__compilation_mode = compilation_mode
         self.__hostname = hostname
+        self.__pattern = pattern
 
     def __queue_to_stub(self):
         pbt_event_stream = self.stub.PublishBuildToolEventStream(
@@ -90,7 +92,7 @@ class Invocation:
         self.__stub_thread = Thread(target=self.__queue_to_stub)
         self.__stub_thread.start()
 
-        init_event = events.started(self.invocation_id, self.__command)
+        init_event = events.started(self.invocation_id, self.__command, pattern=self.__pattern)
         if self.__hostname is not None:
             workspace_event = events.workspace_status(build_host=self.__hostname)
         else:
