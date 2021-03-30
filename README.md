@@ -1,8 +1,8 @@
 # distant-bes
 
-Copyright (c) 2019-2020 [Antmicro](https://www.antmicro.com)
+Copyright (c) 2019-2021 [Antmicro](https://www.antmicro.com)
 
-This repository contains code of `distant-bes`, a library for injecting build results into services implementing [Bazel's Build Event Protocol](https://docs.bazel.build/versions/master/build-event-protocol.html).
+This repository contains the code of `distant-bes`, a library for injecting build results into services implementing [Bazel's Build Event Protocol](https://docs.bazel.build/versions/master/build-event-protocol.html).
 
 ## Installation
 
@@ -37,7 +37,7 @@ Upon successful execution, the ID of the uploaded invocation will be returned.
 
 ## Library reference
 
-To better understand how the whole thing works under the hood, please inspect the `distant-bes/__init__.py` file to see what the **Invocation** class looks like.
+To better understand how this works under the hood, please inspect the `distant-bes/__init__.py` file to see what the **Invocation** class looks like.
 
 Below is an example of how to use the **Invocation** class to inject build results.
 
